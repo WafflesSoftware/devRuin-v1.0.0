@@ -66,6 +66,13 @@ print()
 print("No process running.")
 print()
 
+menu_bar = Menu(root)
+file_menu = Menu(menu_bar, tearoff=0)
+file_menu.add_command(label="Save", command=save)
+file_menu.add_separator()
+file_menu.add_command(label="Exit", command=root.quit)
+menu_bar.add_cascade(label="File", menu=file_menu)
+
 scr_text_code = scrolled_text.ScrolledText(root, width=100, height=30, font="Helvetica 10")
 scr_text_code.pack()
 
@@ -81,4 +88,5 @@ btn_run_debug = ttk.Button(lbl_frame_tools, text="Debug Code", command=run_debug
 
 btn_run_config = ttk.Button(lbl_frame_tools, text="Run Configs", command=run_config)
 
+root.config(menu=menu_bar)
 root.mainloop()
