@@ -1,6 +1,7 @@
 from tkinter import *
 import tkinter.ttk as ttk
 import tkinter.scrolledtext as scrolled_text
+from tkinter import filedialog
 from tkinter import messagebox
 import os
 
@@ -8,6 +9,14 @@ import os
 file_name = 0
 
 name = 0
+
+
+def read():
+    read_file = filedialog.askopenfilename(title="Open file to read")
+    opened_read_file = open(read_file, "r")
+    print()
+    print(opened_read_file.read())
+    print()
 
 
 def run_config():
@@ -69,6 +78,7 @@ print()
 menu_bar = Menu(root)
 file_menu = Menu(menu_bar, tearoff=0)
 file_menu.add_command(label="Save", command=save)
+file_menu.add_command(label="Read", command=read)
 file_menu.add_separator()
 file_menu.add_command(label="Exit", command=root.quit)
 menu_bar.add_cascade(label="File", menu=file_menu)
